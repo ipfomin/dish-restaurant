@@ -1,0 +1,74 @@
+@import '~src/styles/mixins';
+@import '~src/styles/variables';
+
+.restMenu {
+  @include flex(row, center, flex-start);
+  display: flex;
+  height: 301px;
+  width: 100%;
+  background-image: url('/assets/restaurant-menu.png');
+  color: $white;
+  .labelWrapper {
+    width: 980px;
+    padding-top: 150px;
+    h1 {
+      font-size: 50px;
+      font-weight: bold;
+      letter-spacing: -1.79px;
+      margin: 0;
+    }
+  }
+  .menuLine {
+    @include flex(row, center, center);
+    width: 100%;
+    .menuWrapper {
+      @include flex(row, stretch, center);
+      width: 980px;
+      padding: 31px 0;
+      z-index: 10;
+      .menuLineImage {
+        width: 70px;
+        height: 46px;
+      }
+      .menuItems {
+        @include flex(row, flex-start, center);
+        margin: 0 90px;
+        padding: 0;
+        li {
+          font-size: 17px;
+          font-weight: bold;
+          letter-spacing: -0.43px;
+          list-style-type: none;
+          border-radius: 5px;
+          padding: 5px 14px;
+          margin: 0 2px;
+          &.menuItemActive {
+            background-color: #ffb53a;
+          }
+        }
+      }
+      .filterInput {
+        margin-right: 20px;
+        input {
+          width: 305px;
+        }
+      }
+      .menuAvatar {
+        @include flex(row, flex-start, center);
+        .userName {
+          font-size: 17px;
+          font-weight: bold;
+          letter-spacing: -0.43px;
+          max-width: 100px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          margin-right: 8px;
+        }
+        .userImage {
+          width: 18px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}
