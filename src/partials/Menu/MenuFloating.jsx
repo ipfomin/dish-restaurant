@@ -10,6 +10,7 @@ export default class MenuFloating extends React.Component {
     return (
       <div className={styles.MenuFloating}>
         <MenuLine theme="dark" />
+        <div className={styles.backgroundGradient} />
       </div>
     );
   }
