@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, MenuFloating } from 'src/partials'
+import { Menu, MenuFloating, DishesList } from 'src/partials'
 import styles from './Restaurant.module.scss'
 
 export default class Restaurant extends React.Component {
@@ -14,6 +14,7 @@ export default class Restaurant extends React.Component {
       <main className={styles.restaurantPage}>
         <Menu menuRef={this.menuRef} />
         { this.state.isFloatMenuVisible && <MenuFloating /> }
+        <DishesList />
         <div style={{height: '4000px'}}/>
       </main>
     );
