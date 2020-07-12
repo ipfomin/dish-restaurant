@@ -1,19 +1,20 @@
 import React from 'react';
 import { RestInput } from 'src/components'
-import styles from './Menu.module.scss'
+import styles from './MenuLine.module.scss'
 
-export default class Menu extends React.Component {
+export default class MenuLine extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
+    const headerClasses = `${styles.menuLine} ${this.props.theme === 'dark' ? styles.menuLineDark : '' }`
     return (
-      <div className={styles.menuLine}>
+      <header className={headerClasses}>
         <div className={styles.menuWrapper}>
           <img
             className={styles.menuLineImage}
             alt="Restaurant menu background"
-            src="/assets/restaurant-logo.png"
+            src={`/assets/restaurant-logo${this.props.theme === 'dark' ? '-dark' : ''}.png`}
           />
           <ul className={styles.menuItems}>
             <li>Our Restaurant</li>
@@ -29,11 +30,11 @@ export default class Menu extends React.Component {
             <img
               className={styles.userImage}
               alt="User avatar"
-              src="/assets/icons/user.png"
+              src={`/assets/icons/user${this.props.theme === 'dark' ? '-dark' : ''}.png`}
             />
           </div>
         </div>
-      </div>
+      </header>
     );
   }
 }
