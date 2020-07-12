@@ -1,0 +1,36 @@
+@import '~src/styles/mixins';
+@import '~src/styles/variables';
+
+.restInputRoot {
+  position: relative;
+  .restInput {
+    box-sizing: border-box;
+    height: 48px;
+    padding: 12px 20px;
+    // opacity: 0.6;
+    font-size: 17px;
+    letter-spacing: -0.43px;
+    color: #262626;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+  }
+  .restInputRight {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 48px;
+    .searchInput {
+      @include flex(column, center, center);
+      height: 100%;
+      padding-right: 22px;
+      background-color: $white;
+      border-bottom-right-radius: 5px;
+      border-top-right-radius: 5px;
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
