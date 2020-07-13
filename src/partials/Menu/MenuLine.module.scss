@@ -28,6 +28,7 @@
         border-radius: 5px;
         padding: 5px 14px;
         margin: 0 2px;
+        white-space: nowrap;
         &.menuItemActive {
           background-color: #ffb53a;
         }
@@ -49,6 +50,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         margin-right: 8px;
+        white-space: nowrap;
       }
       .userImage {
         width: 18px;

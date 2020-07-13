@@ -1,5 +1,6 @@
 import React from 'react';
 import { RestButton } from 'src/components'
+import { DishCard } from 'src/partials'
 import styles from './DishesList.module.scss'
 
 export default class DishesList extends React.Component {
@@ -26,6 +27,15 @@ export default class DishesList extends React.Component {
                 </div>
               </RestButton>
             </div>
+          </div>
+          <div className={styles.dishes}>
+            <DishCard />
+            <DishCard />
+            <DishCard />
+            <DishCard />
+            <DishCard />
+            <DishCard />
+            <DishCard />
           </div>
         </div>
       </div>
