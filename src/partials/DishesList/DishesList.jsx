@@ -13,8 +13,6 @@ export default class DishesList extends React.Component {
   }
 
   addNewDish () {
-    console.log('addNewDish')
-    console.log('this.props.modalStorage', this.props.modalStorage)
     this.props.modalStorage.open({
       id: uniqid(),
       element: <AddDishModal />

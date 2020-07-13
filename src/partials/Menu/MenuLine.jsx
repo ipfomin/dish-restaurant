@@ -21,7 +21,15 @@ export default class MenuLine extends React.Component {
           <RestInput
             className={styles.filterInput}
             placeholder="Try «Chicken cotoletta»"
-          />
+            searchMode
+          >
+            <div className={styles.searchInput}>
+              <img
+                alt="Search image"
+                src="/assets/icons/search.png"
+              />
+            </div>
+          </RestInput>
           <div className={styles.menuAvatar}>
             <span className={styles.userName}>John C.</span>
             <img

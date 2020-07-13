@@ -8,6 +8,8 @@
   box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.12);
   background-color: $white;
   padding: 97px 164px 0;
+  box-sizing: border-box;
+  color: $black;
   .dishModalContent {
     @include flex(column, flex-start, flex-start);
     .dishName {
@@ -22,7 +24,48 @@
       font-size: 20px;
       letter-spacing: -0.71px;
       color: $white;
-      margin: 0;
+      margin-bottom: 10px;
+    }
+    .nameInput {
+      margin-bottom: 10px;
+      input {
+        width: 633px;
+      }
+      .rightPart {
+        padding: 13px 20px 11px 0;
+        span {
+          opacity: 0.6;
+          font-size: 14px;
+          line-height: 1.71;
+          letter-spacing: -0.35px;
+          color: $dark-grey;
+        }
+      }
+    }
+    .descriptionInput {
+      margin-bottom: 20px;
+      textarea {
+        width: 633px;
+        height: 118px;
+      }
+      .rightPart {
+        padding: 74px 20px 20px 0;
+        span {
+          opacity: 0.6;
+          font-size: 14px;
+          line-height: 1.71;
+          letter-spacing: -0.35px;
+          color: $dark-grey;
+        }
+      }
+    }
+    .ingredientsHeader {
+      @include flex(row, space-between, center);
+      margin-bottom: 20px;
+      span {
+        font-size: 20px;
+        letter-spacing: -0.71px;
+      }
     }
   }
 }

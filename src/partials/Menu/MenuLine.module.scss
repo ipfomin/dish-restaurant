@@ -39,6 +39,15 @@
       input {
         width: 305px;
       }
+      .searchInput {
+        @include flex(column, center, center);
+        height: 100%;
+        padding-right: 22px;
+        img {
+          width: 20px;
+          height: 20px;
+        }
+      }
     }
     .menuAvatar {
       @include flex(row, flex-start, center);

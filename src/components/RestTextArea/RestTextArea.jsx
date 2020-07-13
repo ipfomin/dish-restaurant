@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './RestInput.module.scss';
+import styles from './RestTextArea.module.scss';
 
-export default class RestInput extends React.Component {
+export default class RestTextArea extends React.Component {
   constructor(props) {
     super(props);
     this.handleInput = this.handleInput.bind(this)
@@ -14,16 +14,16 @@ export default class RestInput extends React.Component {
   render() {
     const value = this.props.value
     const placeholder = this.props.placeholder
-    const className = `${styles.restInputRoot} ${this.props.className}`
+    const className = `${styles.restTextAreaRoot} ${this.props.className}`
     return (
       <div className={className}>
-        <input
-          className={styles.restInput}
+        <textarea
+          className={styles.restTextArea}
           value={value}
           placeholder={placeholder}
           onInput={this.handleInput}
         />
-        <div className={styles.restInputRight}>
+        <div className={styles.restTextAreaRight}>
           {this.props.children}
         </div>
       </div>
