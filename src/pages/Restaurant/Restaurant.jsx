@@ -5,7 +5,10 @@ import styles from './Restaurant.module.scss'
 export default class Restaurant extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isFloatMenuVisible: false }
+    this.state = {
+      isFloatMenuVisible: false,
+      dishesList: []
+    }
     this.menuRef = React.createRef();
     this.handleScroll = this.handleScroll.bind(this)
   }
@@ -14,10 +17,13 @@ export default class Restaurant extends React.Component {
       <main className={styles.restaurantPage}>
         <Menu menuRef={this.menuRef} />
         { this.state.isFloatMenuVisible && <MenuFloating /> }
-        <DishesList />
+        <DishesList dishesList={this.state.dishesList} modalStorage={this.props.modalStorage}/>
         <div style={{height: '4000px'}}/>
       </main>
     );
+  }
+  handleUpdateDishes (dishesList) {
+    this.setState({ dishesList })
   }
   handleScroll () {
     const html = document.getElementsByTagName('html')[0]
@@ -27,6 +33,11 @@ export default class Restaurant extends React.Component {
   }
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll)
+    const dishesList = this.props.store.getValue('dishesList')
+    this.props.store.subscribe('dishesList', this.handleUpdateDishes.bind(this))
+    if (dishesList && dishesList.length > 0) {
+      this.setState({ dishesList })
+    }
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll)

@@ -2,14 +2,9 @@ import React from 'react';
 import styles from './DishCard.module.scss';
 
 export default class DishCard extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className={styles.dishCardRoot}>
-        <img className={styles.dishImg} src="/assets/images/meat.jpg" />
         <div className={styles.categoryInfo}>
           <span>MEAT</span>
           <span>243 KCL</span>

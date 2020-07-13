@@ -13,7 +13,7 @@ export default class RestButton extends React.Component {
 
   render() {
     return (
-      <button className={styles.restButtonRoot}>
+      <button className={styles.restButtonRoot} onClick={this.handleClick}>
         {this.props.children}
       </button>
     );

@@ -1,16 +1,39 @@
 import React from 'react';
+import Modal from './Modal'
 import styles from './ModalStack.module.scss';
 
 export default class ModalStack extends React.Component {
-  constructor(props) {
-    super(props);
+  
+  constructor () {
+    super()
+    this.state = {
+      modals: []
+    }
+  }
+
+  componentDidMount () {
+    this.props.modalStorage.subscribe(this.modalsUpdate.bind(this))
+  }
+
+  modalsUpdate (modals) {
+    console.log(modals)
+    this.setState({ modals })
   }
 
   render() {
     return (
-      <div className={styles.modalStackRoot}>
-        {this.props.children}
-      </div>
+      <section className={styles.modalStackRoot}>
+        {
+          this.state.modals.map(modal => 
+            <Modal
+              element={modal.element}
+              data={modal.data}
+              key={modal.id}
+              modalStorage={this.props.modalStorage}
+            />
+          )
+        }
+      </section>
     );
   }
 }

@@ -1,0 +1,28 @@
+@import '~src/styles/mixins';
+@import '~src/styles/variables';
+
+.addDishModal {
+  display: flex;
+  width: 960px;
+  border-radius: 10px;
+  box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.12);
+  background-color: $white;
+  padding: 97px 164px 0;
+  .dishModalContent {
+    @include flex(column, flex-start, flex-start);
+    .dishName {
+      font-size: 30px;
+      font-weight: bold;
+      line-height: 1;
+      letter-spacing: -1.07px;
+      color: $black;
+      margin-bottom: 10px;
+    }
+    .dishDescription {
+      font-size: 20px;
+      letter-spacing: -0.71px;
+      color: $white;
+      margin: 0;
+    }
+  }
+}

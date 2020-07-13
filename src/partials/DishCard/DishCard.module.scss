@@ -4,18 +4,13 @@
 .dishCardRoot {
   @include flex(column, stretch, stretch);
   position: relative;
-  height: 426px;
+  height: 246px;
   width: 305px;
   border-radius: 10px;
   box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.12);
   color: $medium-grey;
   margin-left: 21px;
   margin-top: 30px;
-  .dishImg {
-    width: 305px;
-    height: 180px;
-    border-radius: 10px;
-  }
   .categoryInfo {
     @include flex(row, space-between, center);
     padding: 20px 30px 10px 30px;

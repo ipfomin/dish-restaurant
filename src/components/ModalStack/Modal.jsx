@@ -2,15 +2,18 @@ import React from 'react';
 import styles from './Modal.module.scss';
 
 export default class Modal extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
-  render() {
+  render () {
+    if (!this.props.element) {
+      return null
+    }
     return (
       <div className={styles.modalRoot}>
-        {this.props.children}
+        <div className={styles.modalContent}>
+          {this.props.element}
+        </div>
       </div>
     );
   }
+
 }

@@ -3,9 +3,6 @@ import { RestInput } from 'src/components'
 import styles from './MenuLine.module.scss'
 
 export default class MenuLine extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const headerClasses = `${styles.menuLine} ${this.props.theme === 'dark' ? styles.menuLineDark : '' }`
     return (
