@@ -3,6 +3,16 @@ import { RestInput } from 'src/components'
 import styles from './MenuLine.module.scss'
 
 export default class MenuLine extends React.Component {
+
+  constructor () {
+    super()
+    this.handleInputFilter = this.handleInputFilter.bind(this)
+  }
+
+  handleInputFilter (inputFilter) {
+    this.props.handleFilter && this.props.handleFilter(inputFilter)
+  }
+
   render() {
     const headerClasses = `${styles.menuLine} ${this.props.theme === 'dark' ? styles.menuLineDark : '' }`
     return (
@@ -22,10 +32,12 @@ export default class MenuLine extends React.Component {
             className={styles.filterInput}
             placeholder="Try «Chicken cotoletta»"
             searchMode
+            value={this.props.inputFilter}
+            handleInput={this.handleInputFilter}
           >
             <div className={styles.searchInput}>
               <img
-                alt="Search image"
+                alt="Search"
                 src="/assets/icons/search.png"
               />
             </div>

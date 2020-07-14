@@ -7,18 +7,37 @@ export default class Restaurant extends React.Component {
     super(props);
     this.state = {
       isFloatMenuVisible: false,
-      dishesList: []
+      dishesList: [],
+      inputFilter: ''
     }
     this.menuRef = React.createRef();
     this.handleScroll = this.handleScroll.bind(this)
     this.handleUpdateDishes = this.handleUpdateDishes.bind(this)
+    this.handleFilter = this.handleFilter.bind(this)
   }
+
+  handleFilter (inputFilter) {
+    this.setState({
+      inputFilter
+    })
+  }
+
   render() {
+    const currentList = this.state.dishesList.filter(dish => {
+      if (!this.state.inputFilter) {
+        return true
+      }
+      const value = this.state.inputFilter.toLowerCase()
+      const isFilterName = dish.dishName.toLowerCase().includes(value)
+      const isFilterIngredient = dish.ingredients.filter(ingr => ingr.name.toLowerCase().includes(value)).length > 0
+      return isFilterName || isFilterIngredient
+    })
     return (
       <main className={styles.restaurantPage}>
-        <Menu menuRef={this.menuRef} />
-        { this.state.isFloatMenuVisible && <MenuFloating /> }
-        <DishesList dishesList={this.state.dishesList} modalStorage={this.props.modalStorage}/>
+        <Menu menuRef={this.menuRef} handleFilter={this.handleFilter} inputFilter={this.state.inputFilter}/>
+        { this.state.isFloatMenuVisible &&
+          <MenuFloating handleFilter={this.handleFilter} inputFilter={this.state.inputFilter} /> }
+        <DishesList dishesList={currentList} modalStorage={this.props.modalStorage}/>
         <div style={{height: '4000px'}}/>
       </main>
     );
