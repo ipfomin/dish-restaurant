@@ -22,6 +22,7 @@ export default class AddDishModal extends React.Component {
     this.handleInputDishDescription = this.handleInputDishDescription.bind(this)
     this.addNewIngredient = this.addNewIngredient.bind(this)
     this.handleInputIngredient = this.handleInputIngredient.bind(this)
+    this.handleRemoveIngredient = this.handleRemoveIngredient.bind(this)
   }
 
   handleInputIngredient (value, key, ingredient) {
@@ -32,7 +33,6 @@ export default class AddDishModal extends React.Component {
     }
     const ingredients = [...this.state.ingredients]
     ingredients.splice(ingredientIndex, 1, newIngredient)
-    console.log('ingredients, value, key, ingredient, newIngredient, ingredientIndex', ingredients, value, key, ingredient, newIngredient, ingredientIndex)
     this.setState({ ingredients })
   }
 
@@ -42,6 +42,13 @@ export default class AddDishModal extends React.Component {
 
   handleInputDishDescription (dishDescription) {
     this.setState({ dishDescription })
+  }
+
+  handleRemoveIngredient (ingredient) {
+    const ingredientIndex = this.state.ingredients.findIndex(ingr => ingr.id === ingredient.id)
+    const ingredients = [...this.state.ingredients]
+    ingredients.splice(ingredientIndex, 1)
+    this.setState({ ingredients })
   }
 
   addNewIngredient () {
@@ -58,8 +65,12 @@ export default class AddDishModal extends React.Component {
     return (
       <div className={styles.addDishModal}>
         <div className={styles.dishModalContent}>
-          <span className={styles.dishName}>Add a new dish</span>
-          <span className={styles.dishDescription}>Please enter all informations about your new dish</span>
+          <div
+            className={styles.dishName}
+          >{this.state.dishName ? this.state.dishName : 'Add a new dish'}</div>
+          <div
+            className={styles.dishDescription}
+          >{this.state.dishDescription ? this.state.dishDescription : 'Please enter all informations about your new dish'}</div>
           <RestInput
             className={styles.nameInput}
             placeholder="Dish name"
@@ -114,11 +125,27 @@ export default class AddDishModal extends React.Component {
                       value={ingredient.weight}
                       handleInput={weight => this.handleInputIngredient(weight, 'weight', ingredient)}
                     />
-                    <img alt="Trash" className={styles.removeIngredientIcon} src="/assets/icons/trash.png" />
+                    <div className={styles.removeIngredient} onClick={e => this.handleRemoveIngredient(ingredient)}>
+                      <img
+                        alt="Trash"
+                        className={styles.removeIngredientIcon}
+                        src="/assets/icons/trash.png"
+                      />
+                    </div>
                   </div>
                 )
               )
             }
+          </div>
+          <div className={styles.ingredientsStatLine}>
+            <div className={styles.statContent}>
+              <div className={styles.leftStatPart}>
+                <span><b>1 Ingredients</b> in your dish</span>
+              </div>
+              <div className={styles.rightStatPart}>
+                <span>Total weight : <b>153 Kcl</b></span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

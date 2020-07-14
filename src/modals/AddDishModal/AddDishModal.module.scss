@@ -4,27 +4,37 @@
 .addDishModal {
   display: flex;
   width: 960px;
+  max-height: 824px;
   border-radius: 10px;
   box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.12);
   background-color: $white;
   padding: 97px 164px 0;
   box-sizing: border-box;
   color: $black;
+  overflow-y: auto;
   .dishModalContent {
     @include flex(column, flex-start, flex-start);
     .dishName {
+      width: 633px;
+      max-height: 60px;
+      margin-bottom: 10px;
       font-size: 30px;
       font-weight: bold;
       line-height: 1;
       letter-spacing: -1.07px;
       color: $black;
-      margin-bottom: 10px;
+      word-wrap: break-word;
+      overflow: hidden;
     }
     .dishDescription {
+      width: 633px;
+      max-height: 50px;
+      margin-bottom: 20px;
       font-size: 20px;
       letter-spacing: -0.71px;
       color: $black;
-      margin-bottom: 20px;
+      word-wrap: break-word;
+      overflow: hidden;
     }
     .nameInput {
       margin-bottom: 10px;
@@ -87,7 +97,7 @@
     }
     .ingredientsList {
       @include flex(column, stretch, stretch);
-      margin-bottom: 15px;
+      margin-bottom: 25px;
       max-height: 174px;
       overflow-y: auto;
       .ingredientsListRow {
@@ -101,7 +111,7 @@
         .ingredientNameInput {
           margin-right: 20px;
           input {
-            width: 400px;
+            width: 381px;
           }
           .ingredientNameInputRightPart {
             padding: 12px 20px 12px 0;
@@ -114,12 +124,38 @@
         .ingredientWeightInput {
           margin-right: 10px;
           input {
-            width: 145px;
+            width: 140px;
           }
         }
-        .removeIngredientIcon {
-          width: 24px;
-          height: 24px;
+        .removeIngredient {
+          @include flex(row, center, center);
+          border-radius: 5px;
+          padding: 12px;
+          cursor: pointer;
+          .removeIngredientIcon {
+            width: 24px;
+            height: 24px;
+          }
+          &:hover {
+            background-color: $grey-hover;
+          }
+        }
+      }
+    }
+    .ingredientsStatLine {
+      height: 44px;
+      width: 100%;
+      box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.12);
+      .statContent {
+        @include flex(row, space-between, center);
+        height: 100%;
+        .leftStatPart,
+        .rightStatPart {
+          @include flex(row, flex-start, center);
+          font-size: 17px;
+          line-height: 1.41;
+          letter-spacing: -0.43px;
+          color: $dark-grey;
         }
       }
     }
