@@ -32,7 +32,7 @@
     }
     .dishName {
       width: 245px;
-      height: 66px;
+      height: 80px;
       font-size: 17px;
       font-weight: bold;
       letter-spacing: -0.61px;
@@ -40,34 +40,10 @@
   }
   .dishDescription {
     width: 245px;
-    height: 54px;
+    height: 90px;
     font-size: 14px;
     letter-spacing: -0.5px;
     margin-left: 30px;
     margin-bottom: 10px;
-  }
-  .priceAndPersons {
-    @include flex(row, space-between, flex-start);
-    margin: 0 30px;
-    .leftData {
-      @include flex(row, flex-start, center);
-      .symbol {
-        font-size: 14px;
-        letter-spacing: -0.5px;
-        margin-top: 3px;
-      }
-      .price {
-        font-size: 17px;
-        font-weight: bold;
-        letter-spacing: -0.61px;
-      }
-    }
-    .rightData {
-      width: 78px;
-      font-size: 14px;
-      letter-spacing: -0.5px;
-      line-height: 1.57;
-      text-align: end;
-    }
   }
 }

@@ -8,6 +8,7 @@ export default class AddDishModal extends React.Component {
   constructor () {
     super()
     this.state = {
+      id: uniqid(),
       dishName: '',
       dishDescription: '',
       ingredients: [
@@ -23,6 +24,7 @@ export default class AddDishModal extends React.Component {
     this.addNewIngredient = this.addNewIngredient.bind(this)
     this.handleInputIngredient = this.handleInputIngredient.bind(this)
     this.handleRemoveIngredient = this.handleRemoveIngredient.bind(this)
+    this.handleAddDish = this.handleAddDish.bind(this)
   }
 
   handleInputIngredient (value, key, ingredient) {
@@ -49,6 +51,19 @@ export default class AddDishModal extends React.Component {
     const ingredients = [...this.state.ingredients]
     ingredients.splice(ingredientIndex, 1)
     this.setState({ ingredients })
+  }
+
+  handleAddDish () {
+    // console.log(this.props)
+    const dishesList = [...this.props.data.dishesList]
+    dishesList.push({
+      id: this.state.id,
+      dishName: this.state.dishName,
+      dishDescription: this.state.dishDescription,
+      ingredients: this.state.ingredients
+    })
+    console.log('dishesList', dishesList)
+    this.props.store.setValue('dishesList', dishesList)
   }
 
   addNewIngredient () {
@@ -158,7 +173,7 @@ export default class AddDishModal extends React.Component {
               </div>
             </div>
           </div>
-          <RestButton className={styles.sumbitButton}>
+          <RestButton className={styles.sumbitButton} handleClick={this.handleAddDish}>
             <div className={styles.sumbitButtonContent}>
               <div className={styles.submitInfo}>
                 <span className={styles.submitLabel}>Add this dish to my menu</span>

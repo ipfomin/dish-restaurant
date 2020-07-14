@@ -15,7 +15,10 @@ export default class DishesList extends React.Component {
   addNewDish () {
     this.props.modalStorage.open({
       id: uniqid(),
-      element: <AddDishModal />
+      element: <AddDishModal />,
+      data: {
+        dishesList: this.props.dishesList
+      }
     })
   }
 
@@ -42,7 +45,7 @@ export default class DishesList extends React.Component {
           </div>
           <div className={styles.dishes}>
             {
-              this.props.dishesList.map(dish => <DishCard dish={dish}/>)
+              this.props.dishesList.map(dish => <DishCard dish={dish} key={dish.id} />)
             }
           </div>
         </div>

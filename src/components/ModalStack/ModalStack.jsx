@@ -30,6 +30,7 @@ export default class ModalStack extends React.Component {
               data={modal.data}
               key={modal.id}
               modalStorage={this.props.modalStorage}
+              store={this.props.store}
             />
           )
         }

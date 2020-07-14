@@ -21,7 +21,7 @@ export default class RestTextArea extends React.Component {
           className={styles.restTextArea}
           value={value}
           placeholder={placeholder}
-          onInput={this.handleInput}
+          onChange={this.handleInput}
         />
         <div className={styles.restTextAreaRight}>
           {this.props.children}

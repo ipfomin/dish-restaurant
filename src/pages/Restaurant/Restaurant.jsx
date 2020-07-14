@@ -11,6 +11,7 @@ export default class Restaurant extends React.Component {
     }
     this.menuRef = React.createRef();
     this.handleScroll = this.handleScroll.bind(this)
+    this.handleUpdateDishes = this.handleUpdateDishes.bind(this)
   }
   render() {
     return (
@@ -23,6 +24,7 @@ export default class Restaurant extends React.Component {
     );
   }
   handleUpdateDishes (dishesList) {
+    console.log(this.props)
     this.setState({ dishesList })
   }
   handleScroll () {
@@ -34,7 +36,7 @@ export default class Restaurant extends React.Component {
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll)
     const dishesList = this.props.store.getValue('dishesList')
-    this.props.store.subscribe('dishesList', this.handleUpdateDishes.bind(this))
+    this.props.store.subscribe('dishesList', this.handleUpdateDishes)
     if (dishesList && dishesList.length > 0) {
       this.setState({ dishesList })
     }

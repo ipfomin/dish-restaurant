@@ -21,7 +21,7 @@ export default class RestInput extends React.Component {
           className={styles.restInput}
           value={value}
           placeholder={placeholder}
-          onInput={this.handleInput}
+          onChange={this.handleInput}
         />
         <div className={styles.restInputRight}>
           {this.props.children}
