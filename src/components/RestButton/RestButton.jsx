@@ -12,13 +12,13 @@ export default class RestButton extends React.Component {
   }
 
   render() {
+    const currentClass = this.props.mode === 'transparent'
+      ? styles.restButtonTransparentRoot
+      : styles.restButtonRoot
+    const className = `${currentClass} ${this.props.className}`
     return (
       <button
-        className={
-          this.props.mode === 'transparent'
-            ? styles.restButtonTransparentRoot
-            : styles.restButtonRoot
-        }
+        className={className}
         onClick={this.handleClick}
       >
         {this.props.children}
