@@ -6,7 +6,7 @@
   width: 100%;
   display: flex;
   color: $black;
-  margin-top: 60px;
+  margin: 60px 0;
   .dishesList {
     @include flex(column, stretch, stretch);
     width: 978px;

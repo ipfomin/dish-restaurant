@@ -38,12 +38,10 @@ export default class Restaurant extends React.Component {
         { this.state.isFloatMenuVisible &&
           <MenuFloating handleFilter={this.handleFilter} inputFilter={this.state.inputFilter} /> }
         <DishesList dishesList={currentList} modalStorage={this.props.modalStorage}/>
-        <div style={{height: '4000px'}}/>
       </main>
     );
   }
   handleUpdateDishes (dishesList) {
-    console.log(this.props)
     this.setState({ dishesList })
   }
   handleScroll () {

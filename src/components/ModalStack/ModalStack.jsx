@@ -16,7 +16,6 @@ export default class ModalStack extends React.Component {
   }
 
   modalsUpdate (modals) {
-    console.log(modals)
     this.setState({ modals })
   }
 

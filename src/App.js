@@ -1,8 +1,10 @@
 import React from 'react';
 import { ModalStack } from 'src/components'
 import { Restaurant } from 'src/pages';
-import { store, modalStorage } from 'src/store'
+import { store, modalStorage, UseMigration } from 'src/store'
 import './App.scss';
+
+UseMigration(store)
 
 function App() {
   return (
