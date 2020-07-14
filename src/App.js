@@ -1,11 +1,16 @@
 import React from 'react';
-import { Restourant } from 'src/pages';
+import { ModalStack } from 'src/components'
+import { Restaurant } from 'src/pages';
+import { store, modalStorage, UseMigration } from 'src/store'
 import './App.scss';
+
+UseMigration(store)
 
 function App() {
   return (
     <div className="App">
-      <Restourant name="harry" />
+      <Restaurant name="harry" store={store} modalStorage={modalStorage} />
+      <ModalStack store={store} modalStorage={modalStorage} />
     </div>
   );
 }
