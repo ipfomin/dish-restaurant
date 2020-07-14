@@ -11,13 +11,7 @@ export default class AddDishModal extends React.Component {
       id: uniqid(),
       dishName: '',
       dishDescription: '',
-      ingredients: [
-        {
-          name: '',
-          weight: '',
-          id: uniqid()
-        }
-      ]
+      ingredients: []
     }
     this.handleInputDishName = this.handleInputDishName.bind(this)
     this.handleInputDishDescription = this.handleInputDishDescription.bind(this)
@@ -163,6 +157,10 @@ export default class AddDishModal extends React.Component {
               }
             </div>
           </div>
+          {
+            ingredientsCount === 0
+              ? <div className={styles.ingredientsStatLineStub} />
+              : (
           <div className={styles.ingredientsStatLine}>
             <div className={styles.statContent}>
               <div className={styles.leftStatPart}>
@@ -173,6 +171,12 @@ export default class AddDishModal extends React.Component {
               </div>
             </div>
           </div>
+              )
+          }
+          {
+            ingredientsCount === 0
+              ? <div className={styles.sumbitButtonStub} />
+              : (
           <RestButton className={styles.sumbitButton} handleClick={this.handleAddDish}>
             <div className={styles.sumbitButtonContent}>
               <div className={styles.submitInfo}>
@@ -182,6 +186,7 @@ export default class AddDishModal extends React.Component {
               <img alt="Plus" className={styles.addIcon} src="/assets/icons/plus.png" />
             </div>
           </RestButton>
+              )}
         </div>
       </div>
     );
