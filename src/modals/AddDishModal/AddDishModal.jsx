@@ -1,3 +1,4 @@
+import uniqid from 'uniqid' 
 import React from 'react';
 import { RestInput, RestTextArea, RestButton } from 'src/components'
 import styles from './AddDishModal.module.scss';
@@ -9,11 +10,30 @@ export default class AddDishModal extends React.Component {
     this.state = {
       dishName: '',
       dishDescription: '',
-      ingredients: []
+      ingredients: [
+        {
+          name: '',
+          weight: '',
+          id: uniqid()
+        }
+      ]
     }
     this.handleInputDishName = this.handleInputDishName.bind(this)
     this.handleInputDishDescription = this.handleInputDishDescription.bind(this)
     this.addNewIngredient = this.addNewIngredient.bind(this)
+    this.handleInputIngredient = this.handleInputIngredient.bind(this)
+  }
+
+  handleInputIngredient (value, key, ingredient) {
+    const ingredientIndex = this.state.ingredients.findIndex(ingr => ingr.id === ingredient.id)
+    const newIngredient = {
+      ...ingredient,
+      [key]: value
+    }
+    const ingredients = [...this.state.ingredients]
+    ingredients.splice(ingredientIndex, 1, newIngredient)
+    console.log('ingredients, value, key, ingredient, newIngredient, ingredientIndex', ingredients, value, key, ingredient, newIngredient, ingredientIndex)
+    this.setState({ ingredients })
   }
 
   handleInputDishName (dishName) {
@@ -25,6 +45,13 @@ export default class AddDishModal extends React.Component {
   }
 
   addNewIngredient () {
+    this.setState({
+      ingredients: [...this.state.ingredients, {
+        name: '',
+        weight: '',
+        id: uniqid()
+      }]
+    })
   }
 
   render() {
@@ -36,6 +63,7 @@ export default class AddDishModal extends React.Component {
           <RestInput
             className={styles.nameInput}
             placeholder="Dish name"
+            value={this.state.dishName}
             handleInput={this.handleInputDishName}
           >
             <div className={styles.rightPart}>
@@ -45,6 +73,7 @@ export default class AddDishModal extends React.Component {
           <RestTextArea
             className={styles.descriptionInput}
             placeholder="Dish description"
+            value={this.state.dishDescription}
             handleInput={this.handleInputDishDescription}
           >
             <div className={styles.rightPart}>
@@ -64,22 +93,32 @@ export default class AddDishModal extends React.Component {
             </RestButton>
           </div>
           <div className={styles.ingredientsList}>
-            <div className={styles.ingredientsListRow}>
-              <img alt="Menu" className={styles.preRowIcon} src="/assets/icons/menu.png" />
-              <RestInput
-                className={styles.ingredientNameInput}
-                placeholder="Ingredient name"
-              >
-                <div className={styles.ingredientNameInputRightPart}>
-                  <img alt="Plus" className={styles.plusIngredientIcon} src="/assets/icons/plus-dark.png" />
-                </div>
-              </RestInput>
-              <RestInput
-                className={styles.ingredientWeightInput}
-                placeholder="Weight (Kcl)"
-              />
-              <img alt="Trash" className={styles.removeIngredientIcon} src="/assets/icons/trash.png" />
-            </div>
+            {
+              this.state.ingredients.map(ingredient =>
+                (
+                  <div className={styles.ingredientsListRow} key={ingredient.id}>
+                    <img alt="Menu" className={styles.preRowIcon} src="/assets/icons/menu.png" />
+                    <RestInput
+                      className={styles.ingredientNameInput}
+                      placeholder="Ingredient name"
+                      value={ingredient.name}
+                      handleInput={name => this.handleInputIngredient(name, 'name', ingredient)}
+                    >
+                      <div className={styles.ingredientNameInputRightPart}>
+                        <img alt="Plus" className={styles.plusIngredientIcon} src="/assets/icons/plus-dark.png" />
+                      </div>
+                    </RestInput>
+                    <RestInput
+                      className={styles.ingredientWeightInput}
+                      placeholder="Weight (Kcl)"
+                      value={ingredient.weight}
+                      handleInput={weight => this.handleInputIngredient(weight, 'weight', ingredient)}
+                    />
+                    <img alt="Trash" className={styles.removeIngredientIcon} src="/assets/icons/trash.png" />
+                  </div>
+                )
+              )
+            }
           </div>
         </div>
       </div>
