@@ -62,9 +62,65 @@
     .ingredientsHeader {
       @include flex(row, space-between, center);
       margin-bottom: 20px;
+      width: 100%;
       span {
         font-size: 20px;
         letter-spacing: -0.71px;
+      }
+      .buttonContent {
+        @include flex(row, flex-start, center);
+        padding-left: 10px;
+        label {
+          font-size: 17px;
+          font-weight: bold;
+          line-height: 1.41;
+          letter-spacing: -0.43px;
+          color: $orange;
+          cursor: inherit;
+        }
+        .buttonIcon {
+          width: 24px;
+          height: 24px;
+          margin: 4px 0;
+        }
+      }
+    }
+    .ingredientsList {
+      @include flex(column, stretch, stretch);
+      margin-bottom: 15px;
+      max-height: 174px;
+      overflow-y: auto;
+      .ingredientsListRow {
+        @include flex(row, stretch, center);
+        margin-bottom: 10px;
+        .preRowIcon {
+          width: 24px;
+          height: 24px;
+          margin-right: 8px;
+        }
+        .ingredientNameInput {
+          margin-right: 20px;
+          input {
+            width: 400px;
+          }
+          .ingredientNameInputRightPart {
+            padding: 12px 20px 12px 0;
+            .plusIngredientIcon {
+              width: 24px;
+              height: 24px;
+            }
+          }
+        }
+        .ingredientWeightInput {
+          margin-right: 10px;
+          input {
+            width: 145px;
+          }
+        }
+        .removeIngredientIcon {
+          width: 24px;
+          height: 24px;
+        }
       }
     }
   }

@@ -53,12 +53,33 @@ export default class AddDishModal extends React.Component {
           </RestTextArea>
           <div className={styles.ingredientsHeader}>
             <span>Ingredients</span>
-            <RestButton handleClick={this.addNewIngredient}>
+            <RestButton
+              mode="transparent"
+              handleClick={this.addNewIngredient}
+            >
               <div className={styles.buttonContent}>
                 <label>Add a new ingredient</label>
-                <img className={styles.buttonIcon} alt="Plus" src="/assets/icons/plus.png" />
+                <img className={styles.buttonIcon} alt="Plus" src="/assets/icons/plus-orange.png" />
               </div>
             </RestButton>
+          </div>
+          <div className={styles.ingredientsList}>
+            <div className={styles.ingredientsListRow}>
+              <img alt="Menu" className={styles.preRowIcon} src="/assets/icons/menu.png" />
+              <RestInput
+                className={styles.ingredientNameInput}
+                placeholder="Ingredient name"
+              >
+                <div className={styles.ingredientNameInputRightPart}>
+                  <img alt="Plus" className={styles.plusIngredientIcon} src="/assets/icons/plus-dark.png" />
+                </div>
+              </RestInput>
+              <RestInput
+                className={styles.ingredientWeightInput}
+                placeholder="Weight (Kcl)"
+              />
+              <img alt="Trash" className={styles.removeIngredientIcon} src="/assets/icons/trash.png" />
+            </div>
           </div>
         </div>
       </div>
