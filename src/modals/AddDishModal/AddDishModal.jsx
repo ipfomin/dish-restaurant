@@ -48,7 +48,8 @@ export default class AddDishModal extends React.Component {
   }
 
   handleAddDish () {
-    const dishesList = [...this.props.data.dishesList]
+    const dishes = this.props.store.getValue('dishesList')
+    const dishesList = [...dishes]
     dishesList.push({
       id: this.state.id,
       dishName: this.state.dishName,
@@ -56,6 +57,7 @@ export default class AddDishModal extends React.Component {
       ingredients: this.state.ingredients
     })
     this.props.store.setValue('dishesList', dishesList)
+    this.props.modalStorage.clear()
   }
 
   addNewIngredient () {

@@ -1,3 +1,4 @@
+import uniqid from 'uniqid' 
 import React from 'react';
 import { Menu, MenuFloating, DishesList } from 'src/partials'
 import styles from './Restaurant.module.scss'
@@ -14,6 +15,7 @@ export default class Restaurant extends React.Component {
     this.handleScroll = this.handleScroll.bind(this)
     this.handleUpdateDishes = this.handleUpdateDishes.bind(this)
     this.handleFilter = this.handleFilter.bind(this)
+    this.handleInfiniteScrolling = this.handleInfiniteScrolling.bind(this)
   }
 
   handleFilter (inputFilter) {
@@ -49,6 +51,17 @@ export default class Restaurant extends React.Component {
     const scrollPosition = html.scrollTop
     const menuHeight = this.menuRef.current.clientHeight
     this.setState({ isFloatMenuVisible: scrollPosition >= (menuHeight - 110) })
+    this.handleInfiniteScrolling(html)
+  }
+  handleInfiniteScrolling (html) {
+    if (this.state.dishesList.length > 0 &&
+      html.scrollHeight - (html.scrollTop + html.clientHeight) <= 20) {
+      const dishesList = this.state.dishesList.concat(this.state.dishesList.map(dish => ({
+        ...dish,
+        id: uniqid()
+      })))
+      this.setState({ dishesList })
+    }
   }
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll)
