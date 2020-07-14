@@ -118,7 +118,7 @@ export default class AddDishModal extends React.Component {
               >
                 <div className={styles.buttonContent}>
                   <label>Add a new ingredient</label>
-                  <img className={styles.buttonIcon} alt="Plus" src="/assets/icons/plus-orange.png" />
+                  <img className={styles.buttonIcon} alt="Plus" src="/assets/icons/plus-orange.PNG" />
                 </div>
               </RestButton>
             </div>
@@ -127,7 +127,7 @@ export default class AddDishModal extends React.Component {
                 this.state.ingredients.map(ingredient =>
                   (
                     <div className={styles.ingredientsListRow} key={ingredient.id}>
-                      <img alt="Menu" className={styles.preRowIcon} src="/assets/icons/menu.png" />
+                      <img alt="Menu" className={styles.preRowIcon} src="/assets/icons/menu.PNG" />
                       <RestInput
                         className={styles.ingredientNameInput}
                         placeholder="Ingredient name"
@@ -135,7 +135,7 @@ export default class AddDishModal extends React.Component {
                         handleInput={name => this.handleInputIngredient(name, 'name', ingredient)}
                       >
                         <div className={styles.ingredientNameInputRightPart}>
-                          <img alt="Plus" className={styles.plusIngredientIcon} src="/assets/icons/plus-dark.png" />
+                          <img alt="Plus" className={styles.plusIngredientIcon} src="/assets/icons/plus-dark.PNG" />
                         </div>
                       </RestInput>
                       <RestInput
@@ -148,7 +148,7 @@ export default class AddDishModal extends React.Component {
                         <img
                           alt="Trash"
                           className={styles.removeIngredientIcon}
-                          src="/assets/icons/trash.png"
+                          src="/assets/icons/trash.PNG"
                         />
                       </div>
                     </div>
@@ -183,7 +183,7 @@ export default class AddDishModal extends React.Component {
                       <span className={styles.submitLabel}>Add this dish to my menu</span>
                       <span>{summaryWeight} Kcl</span>
                     </div>
-                    <img alt="Plus" className={styles.addIcon} src="/assets/icons/plus.png" />
+                    <img alt="Plus" className={styles.addIcon} src="/assets/icons/plus.PNG" />
                   </div>
                 </RestButton>
               )}

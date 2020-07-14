@@ -21,7 +21,7 @@ export default class MenuLine extends React.Component {
           <img
             className={styles.menuLineImage}
             alt="Restaurant menu background"
-            src={`/assets/restaurant-logo${this.props.theme === 'dark' ? '-dark' : ''}.png`}
+            src={`/assets/restaurant-logo${this.props.theme === 'dark' ? '-dark' : ''}.PNG`}
           />
           <ul className={styles.menuItems}>
             <li>Our Restaurant</li>
@@ -38,7 +38,7 @@ export default class MenuLine extends React.Component {
             <div className={styles.searchInput}>
               <img
                 alt="Search"
-                src="/assets/icons/search.png"
+                src="/assets/icons/search.PNG"
               />
             </div>
           </RestInput>
@@ -47,7 +47,7 @@ export default class MenuLine extends React.Component {
             <img
               className={styles.userImage}
               alt="User avatar"
-              src={`/assets/icons/user${this.props.theme === 'dark' ? '-dark' : ''}.png`}
+              src={`/assets/icons/user${this.props.theme === 'dark' ? '-dark' : ''}.PNG`}
             />
           </div>
         </div>

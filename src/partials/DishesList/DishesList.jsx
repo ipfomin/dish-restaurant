@@ -38,7 +38,7 @@ export default class DishesList extends React.Component {
               <RestButton handleClick={this.addNewDish}>
                 <div className={styles.buttonContent}>
                   <label>Add a new dish</label>
-                  <img className={styles.buttonIcon} alt="Plus" src="/assets/icons/plus.png" />
+                  <img className={styles.buttonIcon} alt="Plus" src="/assets/icons/plus.PNG" />
                 </div>
               </RestButton>
             </div>
